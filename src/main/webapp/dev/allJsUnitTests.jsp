@@ -297,6 +297,7 @@
             </tbody>
         </table>
     </div>
+    <div id="visible">Visible</div>
     <script type="text/javascript" src="<%= FrontEndLibrary.QUNIT %>"></script>
     <script type="text/javascript" src="<%= FrontEndLibrary.BLANKET %>"></script>
     <script type="text/javascript" src="<%= FrontEndLibrary.JQUERY %>"></script>

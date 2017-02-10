@@ -6,8 +6,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.TimeZone;
 
-import teammates.common.datatransfer.CourseAttributes;
-import teammates.common.datatransfer.FeedbackSessionAttributes;
+import teammates.common.datatransfer.attributes.CourseAttributes;
+import teammates.common.datatransfer.attributes.FeedbackSessionAttributes;
 import teammates.common.exception.EntityDoesNotExistException;
 import teammates.common.util.ActivityLogEntry;
 import teammates.common.util.AdminLogQuery;
@@ -77,7 +77,7 @@ public class AdminActivityLogPageAction extends Action {
         
         // This determines whether the logs related to testing data should be shown. Use "testdata=true" in URL
         // to show all testing logs. This will keep showing all logs from testing data despite any action
-        // or change in the page unless the the page is reloaded with "?testdata=false"
+        // or change in the page unless the page is reloaded with "?testdata=false"
         // or simply reloaded with this parameter omitted.
         boolean ifShowTestData = getRequestParamAsBoolean("testdata");
         

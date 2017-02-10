@@ -1,26 +1,25 @@
 package teammates.test.cases.browsertests;
 
 import org.openqa.selenium.By;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import teammates.common.util.Const;
 import teammates.test.pageobjects.AppPage;
-import teammates.test.pageobjects.Browser;
-import teammates.test.pageobjects.BrowserPool;
 
 /** Covers the table sorting functionality
  */
 public class TableSortTest extends BaseUiTestCase {
-    private static Browser browser;
     private static AppPage page;
 
+    @Override
+    protected void prepareTestData() {
+        // no test data used in this test
+    }
+    
     @BeforeClass
     public void classSetup() {
-        printTestClassHeader();
-        browser = BrowserPool.getBrowser();
-        loginAdmin(browser);
+        loginAdmin();
         page = AppPage.getNewPageInstance(browser).navigateTo(createUrl(Const.ViewURIs.TABLE_SORT));
     }
     
@@ -134,6 +133,27 @@ public class TableSortTest extends BaseUiTestCase {
                 "N/S",
                 "N/A");
     }
+    
+    @Test
+    public void testTableSortingPointNumber() {
+        verifySortingOrder(By.id("button_sortPointNumber"),
+        
+                "-1.667",
+                "-1.51",
+                "-1",
+                "-0.5",
+                "-0.4",
+                "-0.1",
+                "0",
+                "0.2",
+                "0.333",
+                "0.45",
+                "0.9",
+                "1",
+                "1.1",
+                "1.333",
+                "1.45");
+    }
  
     @Test
     public void testStableSort() {
@@ -209,9 +229,4 @@ public class TableSortTest extends BaseUiTestCase {
         page.verifyContains(searchString.toString());
     }
 
-    @AfterClass
-    public static void classTearDown() {
-        printTestClassFooter();
-        BrowserPool.release(browser);
-    }
 }
